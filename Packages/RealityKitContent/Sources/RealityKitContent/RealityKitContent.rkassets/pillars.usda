@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Movie_Clapperboard", "Group", "Scene", "Speed_Graphic_Camera", "Zenit_6_camera", "CylinderA", "CylinderB", "CylinderC"]
+    reorder nameChildren = ["Movie_Clapperboard", "Group", "Scene", "Speed_Graphic_Camera", "Zenit_6_camera", "CylinderA", "CylinderB", "CylinderB"]
     rel material:binding = None (
         bindMaterialAs = "weakerThanDescendants"
     )
@@ -43,7 +43,9 @@ def Xform "Root"
     {
         uniform token axis = "Y"
         double height = 0.2
-        rel material:binding = </Root/CylinderA/DefaultMaterial>
+        rel material:binding = </Root/CylinderA/DefaultMaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
         double radius = 0.1
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
@@ -67,42 +69,26 @@ def Xform "Root"
         {
             uniform token info:id = "RealityKit.InputTarget"
         }
-    }
 
-    def Cylinder "CylinderB" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-    )
-    {
-        uniform token axis = "Y"
-        double height = 0.2
-        rel material:binding = </Root/CylinderB/DefaultMaterial>
-        double radius = 0.1
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.011992395, 0, -1.3114821)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def Material "DefaultMaterial"
+        def RealityKitComponent "Anchoring"
         {
-            token outputs:surface.connect = </Root/CylinderB/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+            uniform token info:id = "RealityKit.Anchoring"
 
-            def Shader "DefaultSurfaceShader"
+            def RealityKitStruct "descriptor"
             {
-                uniform token info:id = "UsdPreviewSurface"
-                color3f inputs:diffuseColor = (1, 1, 1)
-                float inputs:roughness = 0.75
-                token outputs:surface
             }
         }
 
-        def RealityKitComponent "InputTarget"
+        def RealityKitComponent "Accessibility"
         {
-            uniform token info:id = "RealityKit.InputTarget"
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Pillar"
+            string value = "Pillar that displays the camera."
         }
     }
 
-    def Cylinder "CylinderC" (
+    def Cylinder "CylinderB" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
         customData = {
@@ -112,7 +98,7 @@ def Xform "Root"
     {
         uniform token axis = "Y"
         double height = 0.2
-        rel material:binding = </Root/CylinderC/DefaultMaterial>
+        rel material:binding = </Root/CylinderB/DefaultMaterial>
         double radius = 0.1
         quatf xformOp:orient = (0.97951156, 0, -0.20138784, 0)
         float3 xformOp:scale = (1, 1, 1)
@@ -121,7 +107,7 @@ def Xform "Root"
 
         def Material "DefaultMaterial"
         {
-            token outputs:surface.connect = </Root/CylinderC/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+            token outputs:surface.connect = </Root/CylinderB/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
 
             def Shader "DefaultSurfaceShader"
             {
