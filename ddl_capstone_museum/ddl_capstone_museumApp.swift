@@ -10,12 +10,17 @@ import SwiftUI
 @main
 struct ddl_capstone_museumApp: App {
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "Content") {
             ContentView()
         }
+        
+   //     WindowGroup(id: "DetailView", for: String.self) { value in
+  //          DetailView(title: value.wrappedValue!)
+        }
 
-        ImmersiveSpace(id: "ImmersiveSpace") {
-            ImmersiveView()
-        }.immersionStyle(selection: .constant(.full), in: .full)
-    }
+
+ //       ImmersiveSpace(id: "ImmersiveSpace") {
+//            ImmersiveView()
+//        }.immersionStyle(selection: .constant(.mixed), in: .mixed)
+ //   }
 }

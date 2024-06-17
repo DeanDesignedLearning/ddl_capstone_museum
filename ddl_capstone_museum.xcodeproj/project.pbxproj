@@ -14,6 +14,7 @@
 		B790AA972C1CD65E00EB0C56 /* ImageBasedLighting.skybox in Resources */ = {isa = PBXBuildFile; fileRef = B790AA962C1CD65E00EB0C56 /* ImageBasedLighting.skybox */; };
 		B790AA992C1CD65F00EB0C56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B790AA982C1CD65F00EB0C56 /* Assets.xcassets */; };
 		B790AA9C2C1CD65F00EB0C56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B790AA9B2C1CD65F00EB0C56 /* Preview Assets.xcassets */; };
+		B790AAA82C1E7EA700EB0C56 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B790AAA72C1E7EA700EB0C56 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B790AA982C1CD65F00EB0C56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B790AA9B2C1CD65F00EB0C56 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B790AA9D2C1CD65F00EB0C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B790AAA72C1E7EA700EB0C56 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				B790AA902C1CD65E00EB0C56 /* ddl_capstone_museumApp.swift */,
 				B790AA922C1CD65E00EB0C56 /* ContentView.swift */,
 				B790AA942C1CD65E00EB0C56 /* ImmersiveView.swift */,
+				B790AAA72C1E7EA700EB0C56 /* DetailView.swift */,
 				B790AA962C1CD65E00EB0C56 /* ImageBasedLighting.skybox */,
 				B790AA982C1CD65F00EB0C56 /* Assets.xcassets */,
 				B790AA9D2C1CD65F00EB0C56 /* Info.plist */,
@@ -163,6 +166,7 @@
 			files = (
 				B790AA932C1CD65E00EB0C56 /* ContentView.swift in Sources */,
 				B790AA912C1CD65E00EB0C56 /* ddl_capstone_museumApp.swift in Sources */,
+				B790AAA82C1E7EA700EB0C56 /* DetailView.swift in Sources */,
 				B790AA952C1CD65E00EB0C56 /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
