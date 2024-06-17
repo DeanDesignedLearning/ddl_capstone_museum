@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8EDA0410-32CB-487F-8DE1-F0A58F131B9C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ddl_capstone_museum/ContentView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "63FD9321-E2F2-4F4F-8EDD-91DCEB0E4B25"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -30,40 +14,10 @@
             filePath = "ddl_capstone_museum/ImmersiveView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "63FD9321-E2F2-4F4F-8EDD-91DCEB0E4B25 - 8574b50b469e209"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Swift.MainActor @Sendable (inout _RealityKit_SwiftUI.RealityViewContent) async -&gt; () in ddl_capstone_museum.ImmersiveView.body.getter : some"
-                  moduleName = "ddl_capstone_museum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chanteldean/DDL_Apps/ddl_capstone_museum/ddl_capstone_museum/ImmersiveView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44">
-               </Location>
-               <Location
-                  uuid = "63FD9321-E2F2-4F4F-8EDD-91DCEB0E4B25 - c2a40e62d90a57e6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(23) suspend resume partial function for closure #1 @Swift.MainActor @Sendable (inout _RealityKit_SwiftUI.RealityViewContent) async -&gt; () in ddl_capstone_museum.ImmersiveView.body.getter : some"
-                  moduleName = "ddl_capstone_museum"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chanteldean/DDL_Apps/ddl_capstone_museum/ddl_capstone_museum/ImmersiveView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44">
-               </Location>
-            </Locations>
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

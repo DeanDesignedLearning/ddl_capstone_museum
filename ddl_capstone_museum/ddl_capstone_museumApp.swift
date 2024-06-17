@@ -14,13 +14,13 @@ struct ddl_capstone_museumApp: App {
             ContentView()
         }
         
-   //     WindowGroup(id: "DetailView", for: String.self) { value in
-  //          DetailView(title: value.wrappedValue!)
+       WindowGroup(id: "DetailView", for: String.self) { value in
+           DetailView(title: value.wrappedValue!)
         }
 
 
- //       ImmersiveSpace(id: "ImmersiveSpace") {
-//            ImmersiveView()
-//        }.immersionStyle(selection: .constant(.mixed), in: .mixed)
- //   }
+       ImmersiveSpace(id: "ImmersiveSpace") {
+            ImmersiveView()
+        }.immersionStyle(selection: .constant(.mixed), in: .mixed)
+   }
 }
