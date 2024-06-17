@@ -9,7 +9,7 @@ def Xform "Root"
 {
     reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial"]
     def Sphere "Sphere_Right" (
-        active = true
+        active = false
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
@@ -24,7 +24,7 @@ def Xform "Root"
     }
 
     def Sphere "Sphere_Left" (
-        active = true
+        active = false
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
@@ -38,124 +38,63 @@ def Xform "Root"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 
-    def "GridMaterial" (
+    def Xform "Group" (
         active = true
-        prepend references = @Materials/GridMaterial.usda@
     )
     {
-        quatf xformOp:orient = (0.99999994, 0, 0, 0)
-        float3 xformOp:scale = (1.4577286, 1.4577286, 1.4577286)
-        float3 xformOp:translate = (-0.71350235, 0.05, -3.0202827)
+    }
+
+    def "pillars" (
+        active = true
+        prepend references = @pillars.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-1.6248164, 0, -3.737256)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "pillars_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        prepend references = @pillars.usda@
+    )
+    {
+        rel material:binding = </Root/Zenit_6_camera/Materials/glass> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (-0.98, 0, 2)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Zenit_6_camera" (
+        active = true
+        prepend references = @Zenit_6_camera.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (-2.9591331, 0.1, 1.765315)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-        over "GridMaterial"
+        over "Materials"
         {
-            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
-
-            over "MaterialXPreviewSurface"
-            {
-                float2 ui:nodegraph:node:size = (207.5, 307)
-            }
-
-            over "Remap"
-            {
-                float2 ui:nodegraph:node:size = (94, 181)
-            }
-
-            over "Fractional"
-            {
-                float2 ui:nodegraph:node:size = (154.5, 109)
-            }
-
-            over "Multiply"
-            {
-                float2 ui:nodegraph:node:size = (60, 36)
-            }
-
-            over "Combine3"
-            {
-                float2 ui:nodegraph:node:size = (145, 54)
-            }
-
-            over "Subtract"
-            {
-                float2 ui:nodegraph:node:size = (61.5, 36)
-            }
-
-            over "Absval"
-            {
-                float2 ui:nodegraph:node:size = (121.5, 53)
-            }
-
-            over "BaseColor"
-            {
-                float2 ui:nodegraph:node:size = (151, 53)
-            }
-
-            over "LineColor"
-            {
-                float2 ui:nodegraph:node:size = (151, 53)
-            }
-
-            over "Texcoord"
-            {
-                float2 ui:nodegraph:node:size = (180.5, 53)
-            }
-
-            over "LineCounts"
-            {
-                float2 ui:nodegraph:node:size = (151.5, 53)
-            }
-
-            over "LineWidths"
-            {
-                float2 ui:nodegraph:node:size = (150, 53)
-            }
-
-            over "Separate2"
-            {
-                float2 ui:nodegraph:node:size = (115, 127)
-            }
-
-            over "Min"
-            {
-                float2 ui:nodegraph:node:size = (113, 40)
-            }
-
-            over "Range"
-            {
-                float2 ui:nodegraph:node:size = (98, 217)
-            }
-        }
-
-        over "Cube"
-        {
-            over "DefaultMaterial"
+            over "Metal_032Black"
             {
                 token outputs:mtlx:surface
                 token outputs:realitykit:vertex
             }
         }
+    }
 
-        over "Speed_Graphic_Camera" (
-            customData = {
-                float3 rotationEulerHint = (0, 0, 0)
-            }
-        )
-        {
-            quatf xformOp:orient = (1, 0, 0, 0)
-            float3 xformOp:translate = (-0.04747188, 0.13362332, 0.5778309)
-        }
-
-        over "Zenit_6_camera" (
-            customData = {
-                float3 rotationEulerHint = (0, 3.1415927, 0)
-            }
-        )
-        {
-            quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
-            float3 xformOp:translate = (0, 0.15, 0)
-        }
+    def "Speed_Graphic_Camera" (
+        active = true
+        prepend references = @Speed_Graphic_Camera.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (-0.46753204, 0.15, 2.0553527)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 

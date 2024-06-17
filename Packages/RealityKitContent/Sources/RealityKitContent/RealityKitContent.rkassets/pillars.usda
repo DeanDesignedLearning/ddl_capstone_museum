@@ -42,7 +42,7 @@ def Xform "Root"
     )
     {
         uniform token axis = "Y"
-        double height = 0.2
+        double height = 0.5
         rel material:binding = </Root/CylinderA/DefaultMaterial> (
             bindMaterialAs = "weakerThanDescendants"
         )
@@ -54,12 +54,18 @@ def Xform "Root"
 
         def Material "DefaultMaterial"
         {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
             prepend token outputs:surface.connect = </Root/CylinderA/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
 
             def Shader "DefaultSurfaceShader"
             {
                 uniform token info:id = "UsdPreviewSurface"
-                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:clearcoat = 1
+                color3f inputs:diffuseColor = (0.57874745, 0.32151988, 0) (
+                    colorSpace = "srgb_texture"
+                )
+                float inputs:metallic = 0.5
                 float inputs:roughness = 0.75
                 token outputs:surface
             }
@@ -97,12 +103,14 @@ def Xform "Root"
     )
     {
         uniform token axis = "Y"
-        double height = 0.2
-        rel material:binding = </Root/CylinderB/DefaultMaterial>
+        double height = 0.5
+        rel material:binding = </Root/CylinderA/DefaultMaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
         double radius = 0.1
         quatf xformOp:orient = (0.97951156, 0, -0.20138784, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.35929406, 0, -1.3647513)
+        float3 xformOp:translate = (-0.35929406, 0, -2)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def Material "DefaultMaterial"
