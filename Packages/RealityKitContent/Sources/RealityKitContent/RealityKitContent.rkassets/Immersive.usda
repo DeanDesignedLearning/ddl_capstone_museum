@@ -81,6 +81,14 @@ def Xform "Root"
                     {
                     }
                 }
+
+                def RealityKitComponent "Accessibility"
+                {
+                    uniform token info:id = "RealityKit.Accessibility"
+                    bool isEnabled = 1
+                    string label = "pillars"
+                    string value = "Two brown pillars that display the cameras."
+                }
             }
 
             def "Zenit_6_camera" (
@@ -113,6 +121,14 @@ def Xform "Root"
                     {
                     }
                 }
+
+                def RealityKitComponent "Accessibility"
+                {
+                    uniform token info:id = "RealityKit.Accessibility"
+                    bool isEnabled = 1
+                    string label = "Zenit 6 Camera"
+                    string value = "3D Zenit G Camera Object.  Camera is black and compact with a telephoto lens."
+                }
             }
 
             def "Speed_Graphic_Camera" (
@@ -124,6 +140,14 @@ def Xform "Root"
                 float3 xformOp:scale = (0.01, 0.01, 0.01)
                 float3 xformOp:translate = (-0.21, -0.23, -0.37)
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RealityKitComponent "Accessibility"
+                {
+                    uniform token info:id = "RealityKit.Accessibility"
+                    bool isEnabled = 1
+                    string label = "Speed Graphic Camera"
+                    string value = "Speed Graphic Camera 3D Object.  Camera is black with a large flash on the left side of the camera. "
+                }
             }
         }
     }

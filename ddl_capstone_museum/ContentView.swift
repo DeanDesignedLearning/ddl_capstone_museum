@@ -18,23 +18,31 @@ struct ContentView: View {
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
 
-    //Setting the body variable.
+    //Body
+        
     var body: some View {
 
         // Setting up the Vertical Stack
         
         VStack {
             Text("Museum of Art")
+            //Overlay
+                .overlay {
+                    Color.blue
+                        .opacity(0.2)
+                        .cornerRadius(20)
+                }
             
             Toggle("Show Immersive Space", isOn:$showImmersiveSpace)
                 .toggleStyle(.button)
                 .padding(50)
+            
                
            
            // Model3D(named: "NewScene", bundle: realityKitContentBundle)
            //.padding(.bottom, 50)
         }
-        
+    
 
       // sets the padding, also shows that when the immersivespace button is clicked, the immersive space becomes visible./
         .padding()
