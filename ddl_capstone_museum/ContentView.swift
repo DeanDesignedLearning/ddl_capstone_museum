@@ -36,7 +36,7 @@ struct ContentView: View {
         }
         
 
-        
+      // sets the padding, also shows that when the immersivespace button is clicked, the immersive space becomes visible./
         .padding()
         .onChange(of: showImmersiveSpace) { _, newValue in
             Task {

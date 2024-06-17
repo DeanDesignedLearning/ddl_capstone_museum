@@ -9,7 +9,9 @@ import SwiftUI
 import RealityKit
 import RealityKitContent
 
+//constructor for the immersiveview.
 struct ImmersiveView: View {
+    //declare initial states for environment variables, gesture, pillars, and the two cameras.
     @Environment(\.dismissWindow) var dismissWindow
     @Environment(\.openWindow) var openWindow
     
@@ -24,7 +26,7 @@ struct ImmersiveView: View {
             if let scene = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
                 content.add(scene)
                   
-            /* Occluded floor */
+            /* Occluded floor  - used from Kodeko content*/
                 let floor = ModelEntity(mesh: .generatePlane(width: 100, depth: 100), materials: [OcclusionMaterial()])
                 floor.generateCollisionShapes(recursive: false)
                 floor.components[PhysicsBodyComponent.self] = .init(
@@ -33,7 +35,7 @@ struct ImmersiveView: View {
                 )
                 content.add(floor)
                   
-                  /* steel ball */
+                  /* steel ball
                   let ball = ModelEntity(
                     mesh: .generateSphere(radius: 0.1),
                     materials: [SimpleMaterial(color: .white, isMetallic: true)])
@@ -64,9 +66,10 @@ struct ImmersiveView: View {
                   // editor - need to research this.
                   //              let visDebug = ModelDebugOptionsComponent(visualizationMode: .textureCoordinates)
                   //              ball.modelDebugOptions = visDebug
-                  content.add(ball)
+                  content.add(ball) */
                 }
             }
+        //drag gesture.
             .gesture(dragGesture)
         }
       var dragGesture: some Gesture {
@@ -82,12 +85,13 @@ struct ImmersiveView: View {
       }
     }
 
+//immersiveview
     #Preview {
         ImmersiveView()
             .previewLayout(.sizeThatFits)
     }
             
-            /*
+            /*  Older code that I used during my first iteration.  Couldn't bear to part with it in case I needed it.
              
              // Add the initial RealityKit content
              async let pillars = Entity(named: "pillars", in: realityKitContentBundle)

@@ -49,7 +49,7 @@ def Xform "Root"
         double radius = 0.1
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (0.34622395, 0, -1.3922305)
+        float3 xformOp:translate = (0.28985807, -0.58668, -1.3461808)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def Material "DefaultMaterial"
@@ -110,7 +110,7 @@ def Xform "Root"
         double radius = 0.1
         quatf xformOp:orient = (0.97951156, 0, -0.20138784, 0)
         float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.35929406, 0, -2)
+        float3 xformOp:translate = (-0.42047846, -0.58668, -1.955179)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def Material "DefaultMaterial"

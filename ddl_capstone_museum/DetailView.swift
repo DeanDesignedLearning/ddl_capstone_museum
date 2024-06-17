@@ -8,10 +8,14 @@
 import Foundation
 import SwiftUI
 
+    //constructor for the detailview.
+
 struct DetailView: View {
+    //declare variables
     @State var title: String
 
     @Environment(\.dismissWindow) private var dismissWindow
+    //declare body variable and add the text.  Originally, this was for a window that would display when the camera was picked up.
     var body: some View {
         VStack(spacing: 50) {
             if title.contains("Speed_Graphic_Camera") {

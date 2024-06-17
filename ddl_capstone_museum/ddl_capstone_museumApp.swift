@@ -8,8 +8,11 @@
 import SwiftUI
 
 @main
-struct ddl_capstone_museumApp: App {
-    var body: some Scene {
+    //struct for the museum app
+    struct ddl_capstone_museumApp: App {
+        
+    //windows for the content, detail, and immersive views
+        var body: some Scene {
         WindowGroup(id: "Content") {
             ContentView()
         }

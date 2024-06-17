@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Sphere_Left", "Sphere_Right", "GridMaterial"]
+    reorder nameChildren = ["Sphere_Left", "Group", "pillars_1", "Zenit_6_camera", "Speed_Graphic_Camera", "ADD1E245_5A12_4BC0_B64B_19AE9981E395", "Sphere_Right"]
     def Sphere "Sphere_Right" (
         active = false
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -44,57 +44,88 @@ def Xform "Root"
     {
     }
 
-    def "pillars" (
+    def Xform "Group_1" (
         active = true
-        prepend references = @pillars.usda@
     )
     {
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-1.6248164, 0, -3.737256)
+        reorder nameChildren = ["pillars_1", "Zenit_6_camera", "Speed_Graphic_Camera"]
+        float3 xformOp:translate = (0, 0.5224788, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
 
-    def "pillars_1" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-        prepend references = @pillars.usda@
-    )
-    {
-        rel material:binding = </Root/Zenit_6_camera/Materials/glass> (
-            bindMaterialAs = "weakerThanDescendants"
+        def Xform "Group" (
+            active = true
         )
-        float3 xformOp:scale = (1, 1, 1)
-        float3 xformOp:translate = (-0.98, 0, 2)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
-
-    def "Zenit_6_camera" (
-        active = true
-        prepend references = @Zenit_6_camera.usdz@
-    )
-    {
-        float3 xformOp:scale = (0.01, 0.01, 0.01)
-        float3 xformOp:translate = (-2.9591331, 0.1, 1.765315)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        over "Materials"
         {
-            over "Metal_032Black"
+            float3 xformOp:translate = (0, 0.67277753, -0.08378363)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def "pillars_1" (
+                active = true
+                prepend apiSchemas = ["MaterialBindingAPI"]
+                references = @pillars.usda@
+            )
             {
-                token outputs:mtlx:surface
-                token outputs:realitykit:vertex
+                rel material:binding = </Root/Group_1/Group/Zenit_6_camera/Materials/glass> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                float3 xformOp:translate = (-0.21, -0.23, -0.37)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def RealityKitComponent "Anchoring"
+                {
+                    uniform token info:id = "RealityKit.Anchoring"
+
+                    def RealityKitStruct "descriptor"
+                    {
+                    }
+                }
+            }
+
+            def "Zenit_6_camera" (
+                active = true
+                customData = {
+                    float3 rotationEulerHint = (0, 3.1415927, 0)
+                }
+                references = @Zenit_6_camera.usdz@
+            )
+            {
+                quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
+                float3 xformOp:scale = (0.01, 0.01, 0.01)
+                float3 xformOp:translate = (0.05, -0.23, -0.37)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                over "Materials"
+                {
+                    over "Metal_032Black"
+                    {
+                        token outputs:mtlx:surface
+                        token outputs:realitykit:vertex
+                    }
+                }
+
+                def RealityKitComponent "Anchoring"
+                {
+                    uniform token info:id = "RealityKit.Anchoring"
+
+                    def RealityKitStruct "descriptor"
+                    {
+                    }
+                }
+            }
+
+            def "Speed_Graphic_Camera" (
+                active = true
+                references = @Speed_Graphic_Camera.usdz@
+            )
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (0.01, 0.01, 0.01)
+                float3 xformOp:translate = (-0.21, -0.23, -0.37)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
         }
-    }
-
-    def "Speed_Graphic_Camera" (
-        active = true
-        prepend references = @Speed_Graphic_Camera.usdz@
-    )
-    {
-        float3 xformOp:scale = (0.01, 0.01, 0.01)
-        float3 xformOp:translate = (-0.46753204, 0.15, 2.0553527)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
 
