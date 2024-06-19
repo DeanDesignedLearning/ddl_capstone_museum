@@ -7,8 +7,9 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Sphere_Left", "Smooth_Concrete", "Sphere_Right"]
+    reorder nameChildren = ["Sphere_Left", "CubeGuitar", "AcousticGuitar", "Balance_Scale", "Drum_Kit", "Erhu", "AcousticGuitar_1", "Sphere_Right"]
     def Sphere "Sphere_Right" (
+        active = false
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
@@ -20,9 +21,15 @@ def Xform "Root"
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (0.5, 1.5, -1.5)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
     }
 
     def Sphere "Sphere_Left" (
+        active = false
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
@@ -69,6 +76,375 @@ def Xform "Root"
                 def RealityKitStruct "pose"
                 {
                 }
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+    }
+
+    def "AcousticGuitar" (
+        active = true
+        references = @AcousticGuitar.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "HierarchicalFade"
+        {
+            uniform token info:id = "RealityKit.HierarchicalFade"
+            float opacity = 0
+        }
+    }
+
+    def "Balance_Scale" (
+        references = @BalanceScale.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "HierarchicalFade"
+        {
+            uniform token info:id = "RealityKit.HierarchicalFade"
+            float opacity = 0
+        }
+    }
+
+    def "Drum_Kit" (
+        active = true
+        references = @DrumKit.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "HierarchicalFade"
+        {
+            uniform token info:id = "RealityKit.HierarchicalFade"
+            float opacity = 0
+        }
+    }
+
+    def "Erhu" (
+        active = true
+        references = @Erhu.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "HierarchicalFade"
+        {
+            uniform token info:id = "RealityKit.HierarchicalFade"
+            float opacity = 0
+        }
+    }
+
+    def "AcousticGuitar_1" (
+        active = true
+        references = @AcousticGuitar.usdz@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "geom"
+        {
+            over "realistic"
+            {
+                over "materials"
+                {
+                    over "guitar_acoustic_realistic_01_matsg1"
+                    {
+                        token outputs:mtlx:surface.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/guitar_acoustic_realistic_mat_mtlx.outputs:out>
+                        token outputs:surface.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/guitar_acoustic_realistic_mat.outputs:surface>
+
+                        over "guitar_acoustic_realistic_mat"
+                        {
+                            color3f inputs:diffuseColor.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file17.outputs:rgb>
+                            float inputs:metallic.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file21.outputs:r>
+                            normal3f inputs:normal.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file20.outputs:rgb>
+                            float inputs:occlusion.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file18.outputs:r>
+                            float inputs:roughness.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file19.outputs:r>
+                        }
+
+                        over "file17"
+                        {
+                            float2 inputs:st.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/place2dTexture17.outputs:result>
+                        }
+
+                        over "file18"
+                        {
+                            float2 inputs:st.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/place2dTexture18.outputs:result>
+                        }
+
+                        over "file19"
+                        {
+                            float2 inputs:st.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/place2dTexture19.outputs:result>
+                        }
+
+                        over "file20"
+                        {
+                            float2 inputs:st.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/place2dTexture20.outputs:result>
+                        }
+
+                        over "file21"
+                        {
+                            float2 inputs:st.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/place2dTexture21.outputs:result>
+                        }
+
+                        over "guitar_acoustic_realistic_mat_mtlx"
+                        {
+                            color3f inputs:diffuseColor.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file17_mtlx.outputs:out>
+                            float inputs:metallic.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file21_mtlx.outputs:out>
+                            float3 inputs:normal.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file20_mtlx_offset.outputs:out>
+                            float inputs:occlusion.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file18_mtlx.outputs:out>
+                            float inputs:roughness.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file19_mtlx.outputs:out>
+                        }
+
+                        over "file20_mtlx"
+                        {
+                            float2 inputs:texcoord.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/Lookup_st.outputs:out>
+                        }
+
+                        over "file20_mtlx_scale"
+                        {
+                            float3 inputs:in1.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file20_mtlx.outputs:out>
+                        }
+
+                        over "file20_mtlx_offset"
+                        {
+                            float3 inputs:in1.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/file20_mtlx_scale.outputs:out>
+                        }
+
+                        over "file21_mtlx"
+                        {
+                            float2 inputs:texcoord.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/Lookup_st.outputs:out>
+                        }
+
+                        over "file17_mtlx"
+                        {
+                            float2 inputs:texcoord.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/Lookup_st.outputs:out>
+                        }
+
+                        over "file18_mtlx"
+                        {
+                            float2 inputs:texcoord.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/Lookup_st.outputs:out>
+                        }
+
+                        over "file19_mtlx"
+                        {
+                            float2 inputs:texcoord.connect = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1/Lookup_st.outputs:out>
+                        }
+                    }
+                }
+            }
+        }
+
+        def RealityKitComponent "HierarchicalFade"
+        {
+            uniform token info:id = "RealityKit.HierarchicalFade"
+            float opacity = 0
+        }
+    }
+
+    def Cube "CubeGuitar" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/AcousticGuitar/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (4, 4, 4)
+        float3 xformOp:translate = (-1.796792, 0.019041136, 0.5523266)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:surface.connect = </Root/CubeGuitar/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+            }
+        }
+
+        def RealityKitComponent "Anchoring"
+        {
+            uniform token info:id = "RealityKit.Anchoring"
+
+            def RealityKitStruct "descriptor"
+            {
+            }
+        }
+    }
+
+    def Cone "Cone" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (2, 2, 2)
+        float3 xformOp:translate = (-0.067258835, 0.2305671, 0.40629816)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:surface.connect = </Root/Cone/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+            }
+        }
+    }
+
+    def Cylinder "Cylinder" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/Erhu/geom/realistic/materials/erhu_realistic> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (-1.3734548, 0.303782, -0.4013465)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:surface.connect = </Root/Cylinder/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+            }
+        }
+    }
+
+    def Capsule "Capsule" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/Erhu/geom/realistic/materials/erhu_realistic> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (2.268492, 2.268492, 2.268492)
+        float3 xformOp:translate = (-1.2039583, -0.8655195, -0.25362477)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:surface.connect = </Root/Capsule/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            uniform token info:id = "RealityKit.RigidBody"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
             }
         }
     }
