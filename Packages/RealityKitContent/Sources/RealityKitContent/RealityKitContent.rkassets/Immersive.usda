@@ -7,13 +7,12 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Sphere_Left", "Group", "pillars_1", "Zenit_6_camera", "Speed_Graphic_Camera", "ADD1E245_5A12_4BC0_B64B_19AE9981E395", "Sphere_Right"]
+    reorder nameChildren = ["Sphere_Left", "Smooth_Concrete", "Sphere_Right"]
     def Sphere "Sphere_Right" (
-        active = false
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        rel material:binding = </Root/GridMaterial/GridMaterial> (
+        rel material:binding = </Smooth_Concrete> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double radius = 0.1
@@ -24,11 +23,10 @@ def Xform "Root"
     }
 
     def Sphere "Sphere_Left" (
-        active = false
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
     {
-        rel material:binding = </Root/GridMaterial/GridMaterial> (
+        rel material:binding = </Smooth_Concrete> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double radius = 0.1
@@ -36,120 +34,137 @@ def Xform "Root"
         float3 xformOp:scale = (1, 1, 1)
         float3 xformOp:translate = (-0.5, 1.5, -1.5)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-    }
 
-    def Xform "Group" (
-        active = true
-    )
-    {
-    }
-
-    def Xform "Group_1" (
-        active = true
-    )
-    {
-        reorder nameChildren = ["pillars_1", "Zenit_6_camera", "Speed_Graphic_Camera"]
-        float3 xformOp:translate = (0, 0.5224788, 0)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def Xform "Group" (
-            active = true
-        )
+        def RealityKitComponent "RigidBody"
         {
-            float3 xformOp:translate = (0, 0.67277753, -0.08378363)
-            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            uniform token info:id = "RealityKit.RigidBody"
+            bool isCCDEnabled = 0
 
-            def "pillars_1" (
-                active = true
-                prepend apiSchemas = ["MaterialBindingAPI"]
-                references = @pillars.usda@
-            )
+            def RealityKitStruct "massFrame"
             {
-                rel material:binding = </Root/Group_1/Group/Zenit_6_camera/Materials/glass> (
-                    bindMaterialAs = "weakerThanDescendants"
-                )
-                quatf xformOp:orient = (1, 0, 0, 0)
-                float3 xformOp:scale = (1, 1, 1)
-                float3 xformOp:translate = (-0.21, -0.23, -0.37)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-                def RealityKitComponent "Anchoring"
+                def RealityKitStruct "m_pose"
                 {
-                    uniform token info:id = "RealityKit.Anchoring"
-
-                    def RealityKitStruct "descriptor"
-                    {
-                    }
-                }
-
-                def RealityKitComponent "Accessibility"
-                {
-                    uniform token info:id = "RealityKit.Accessibility"
-                    bool isEnabled = 1
-                    string label = "pillars"
-                    string value = "Two brown pillars that display the cameras."
                 }
             }
 
-            def "Zenit_6_camera" (
-                active = true
-                customData = {
-                    float3 rotationEulerHint = (0, 3.1415927, 0)
-                }
-                references = @Zenit_6_camera.usdz@
-            )
+            def RealityKitStruct "material"
             {
-                quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
-                float3 xformOp:scale = (0.01, 0.01, 0.01)
-                float3 xformOp:translate = (0.05, -0.23, -0.37)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-                over "Materials"
-                {
-                    over "Metal_032Black"
-                    {
-                        token outputs:mtlx:surface
-                        token outputs:realitykit:vertex
-                    }
-                }
-
-                def RealityKitComponent "Anchoring"
-                {
-                    uniform token info:id = "RealityKit.Anchoring"
-
-                    def RealityKitStruct "descriptor"
-                    {
-                    }
-                }
-
-                def RealityKitComponent "Accessibility"
-                {
-                    uniform token info:id = "RealityKit.Accessibility"
-                    bool isEnabled = 1
-                    string label = "Zenit 6 Camera"
-                    string value = "3D Zenit G Camera Object.  Camera is black and compact with a telephoto lens."
-                }
             }
+        }
 
-            def "Speed_Graphic_Camera" (
-                active = true
-                references = @Speed_Graphic_Camera.usdz@
-            )
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
             {
-                quatf xformOp:orient = (1, 0, 0, 0)
-                float3 xformOp:scale = (0.01, 0.01, 0.01)
-                float3 xformOp:translate = (-0.21, -0.23, -0.37)
-                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                float3 extent = (0.2, 0.2, 0.2)
+                float height = 0.2
+                float radius = 0.1
+                token shapeType = "Sphere"
 
-                def RealityKitComponent "Accessibility"
+                def RealityKitStruct "pose"
                 {
-                    uniform token info:id = "RealityKit.Accessibility"
-                    bool isEnabled = 1
-                    string label = "Speed Graphic Camera"
-                    string value = "Speed Graphic Camera 3D Object.  Camera is black with a large flash on the left side of the camera. "
                 }
             }
         }
+    }
+}
+
+def "Smooth_Concrete" (
+    active = true
+    prepend apiSchemas = ["MaterialBindingAPI"]
+    references = @SmoothConcrete.usdz@
+)
+{
+    color3f inputs:Basecolor_Tint (
+        customData = {
+            dictionary realitykit = {
+                float2 positionInSubgraph = (-56.812614, 67.17455)
+                float2 sizeInSubgraph = (160.5, 53)
+                int stackingOrderInSubgraph = 2344
+            }
+        }
+    )
+    float2 inputs:UV_Scale (
+        customData = {
+            dictionary realitykit = {
+                float2 positionInSubgraph = (-725.2588, 351.55255)
+                float2 sizeInSubgraph = (138.5, 53)
+                int stackingOrderInSubgraph = 2272
+            }
+        }
+    )
+    rel material:binding = </Smooth_Concrete> (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+    float2 ui:nodegraph:realitykit:subgraphOutputs:size = (181.5, 99)
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    float3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    over "Dot"
+    {
+        float2 ui:nodegraph:node:size = (44, 18)
+    }
+
+    over "multiply"
+    {
+        float2 ui:nodegraph:node:size = (60, 36)
+    }
+
+    over "add"
+    {
+        float2 ui:nodegraph:node:size = (61.5, 36.5)
+    }
+
+    over "PreviewSurface"
+    {
+        float2 ui:nodegraph:node:size = (148.5, 199)
+    }
+
+    over "Mix"
+    {
+        float2 ui:nodegraph:node:size = (109, 145)
+    }
+
+    over "Swizzle"
+    {
+        float2 ui:nodegraph:node:size = (133.5, 40)
+    }
+
+    over "Swizzle_1"
+    {
+        float2 ui:nodegraph:node:size = (145.5, 53)
+    }
+
+    over "Multiply_1"
+    {
+        float2 ui:nodegraph:node:size = (60, 36)
+    }
+
+    over "BaseColor"
+    {
+        float2 ui:nodegraph:node:size = (158.5, 235)
+    }
+
+    over "Roughness"
+    {
+        float2 ui:nodegraph:node:size = (158.5, 235)
+    }
+
+    over "Metallic"
+    {
+        float2 ui:nodegraph:node:size = (158.5, 235)
+    }
+
+    over "Normal"
+    {
+        float2 ui:nodegraph:node:size = (158.5, 235)
     }
 }
 

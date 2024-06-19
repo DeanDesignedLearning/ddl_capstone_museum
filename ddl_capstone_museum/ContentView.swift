@@ -36,6 +36,7 @@ struct ContentView: View {
             Toggle("Show Immersive Space", isOn:$showImmersiveSpace)
                 .toggleStyle(.button)
                 .padding(50)
+                .glassBackgroundEffect()
             
                
            

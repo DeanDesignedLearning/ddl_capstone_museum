@@ -1,0 +1,97 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    reorder nameChildren = ["Movie_Clapperboard", "Group", "Scene", "Speed_Graphic_Camera", "Zenit_6_camera", "CylinderA", "CylinderB", "CylinderB"]
+    rel material:binding = None (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+
+    def "Movie_Clapperboard" (
+        active = true
+        references = @MovieClapperboard.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "Group" (
+        active = true
+    )
+    {
+    }
+
+    def "Scene" (
+        active = true
+        references = <>
+    )
+    {
+    }
+
+    def Cylinder "CylinderA" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.5
+        rel material:binding = </Root/CylinderA/DefaultMaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double radius = 0.1
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0.28985807, -0.58668, -1.3461808)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            token outputs:mtlx:surface
+            token outputs:realitykit:vertex
+            prepend token outputs:surface.connect = </Root/CylinderA/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+
+            def Shader "DefaultSurfaceShader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 1
+                color3f inputs:diffuseColor = (0.57874745, 0.32151988, 0) (
+                    colorSpace = "srgb_texture"
+                )
+                float inputs:metallic = 0.5
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Anchoring"
+        {
+            uniform token info:id = "RealityKit.Anchoring"
+
+            def RealityKitStruct "descriptor"
+            {
+            }
+        }
+
+        def RealityKitComponent "Accessibility"
+        {
+            uniform token info:id = "RealityKit.Accessibility"
+            bool isEnabled = 1
+            string label = "Pillar"
+            string value = "Pillar that displays the camera."
+        }
+    }
+}
+

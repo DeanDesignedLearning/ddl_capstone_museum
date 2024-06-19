@@ -15,6 +15,15 @@
     "objectMetadataList" : [
       [
         "9E2A0ACC-89E6-456E-A159-3F13A0E2220E",
+        "Root",
+        "CylinderA"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "9E2A0ACC-89E6-456E-A159-3F13A0E2220E",
         "Root"
       ],
       {
@@ -23,8 +32,7 @@
       },
       [
         "9E2A0ACC-89E6-456E-A159-3F13A0E2220E",
-        "Root",
-        "CylinderA"
+        "pillar_a_1"
       ],
       {
         "isExpanded" : true,
@@ -73,26 +81,7 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Sphere_Right"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "GridMaterial",
-        "Cube"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Group_1"
+        "Sphere_Left"
       ],
       {
         "isExpanded" : true,
@@ -119,7 +108,17 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Group"
+        "GridMaterial",
+        "Cube"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Sphere_Right"
       ],
       {
         "isExpanded" : true,
@@ -140,15 +139,6 @@
         "Root",
         "Group_1",
         "Group"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Sphere_Left"
       ],
       {
         "isExpanded" : true,
