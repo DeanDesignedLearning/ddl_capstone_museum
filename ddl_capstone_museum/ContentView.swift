@@ -25,7 +25,10 @@ struct ContentView: View {
         // Setting up the Vertical Stack
         
         VStack {
-            Text("Museum of Art")
+            Text("Museum of Sculptural Arts")
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.system(size:75))
+                .padding(50)
             //Overlay
                 .overlay {
                     Color.blue
@@ -35,13 +38,11 @@ struct ContentView: View {
             
             Toggle("Show Immersive Space", isOn:$showImmersiveSpace)
                 .toggleStyle(.button)
-                .padding(50)
+                .padding(80)
                 .glassBackgroundEffect()
             
                
            
-           // Model3D(named: "NewScene", bundle: realityKitContentBundle)
-           //.padding(.bottom, 50)
         }
     
 
