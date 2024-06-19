@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Sphere_Left", "CubeGuitar", "AcousticGuitar", "Balance_Scale", "Drum_Kit", "Erhu", "AcousticGuitar_1", "Sphere_Right"]
+    reorder nameChildren = ["Sphere_Left", "CubeGuitar", "CylinderErhu", "CapsuleInstrument", "CylinderErhu_1", "AcousticGuitar", "Balance_Scale", "Drum_Kit", "Erhu", "AcousticGuitar_1", "Sphere_Right"]
     def Sphere "Sphere_Right" (
         active = false
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -269,7 +269,7 @@ def Xform "Root"
         double size = 0.2
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (4, 4, 4)
-        float3 xformOp:translate = (-1.796792, 0.019041136, 0.5523266)
+        float3 xformOp:translate = (-1.4693725, 0, 0.047890782)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def Material "DefaultMaterial"
@@ -311,25 +311,28 @@ def Xform "Root"
         }
     }
 
-    def Cone "Cone" (
+    def Cylinder "CylinderErhu" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 0.49391657, 0)
+        }
     )
     {
         uniform token axis = "Y"
         double height = 0.2
-        rel material:binding = </Root/AcousticGuitar_1/geom/realistic/materials/guitar_acoustic_realistic_01_matsg1> (
+        rel material:binding = </Root/Erhu/geom/realistic/materials/erhu_realistic> (
             bindMaterialAs = "weakerThanDescendants"
         )
         double radius = 0.1
-        quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (2, 2, 2)
-        float3 xformOp:translate = (-0.067258835, 0.2305671, 0.40629816)
+        quatf xformOp:orient = (0.96966046, 0, 0.24445565, 0)
+        float3 xformOp:scale = (5, 5, 5)
+        float3 xformOp:translate = (0.54026437, 8.940697e-8, -2.4126794)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def Material "DefaultMaterial"
         {
-            prepend token outputs:surface.connect = </Root/Cone/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+            prepend token outputs:surface.connect = </Root/CylinderErhu/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
 
             def Shader "DefaultSurfaceShader"
             {
@@ -357,7 +360,7 @@ def Xform "Root"
         }
     }
 
-    def Cylinder "Cylinder" (
+    def Cylinder "CylinderErhu_1" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
@@ -370,12 +373,12 @@ def Xform "Root"
         double radius = 0.1
         quatf xformOp:orient = (1, 0, 0, 0)
         float3 xformOp:scale = (5, 5, 5)
-        float3 xformOp:translate = (-1.3734548, 0.303782, -0.4013465)
+        float3 xformOp:translate = (0, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def Material "DefaultMaterial"
         {
-            prepend token outputs:surface.connect = </Root/Cylinder/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+            token outputs:surface.connect = </Root/CylinderErhu_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
 
             def Shader "DefaultSurfaceShader"
             {
@@ -403,7 +406,7 @@ def Xform "Root"
         }
     }
 
-    def Capsule "Capsule" (
+    def Capsule "CapsuleInstrument" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
     )
@@ -415,13 +418,13 @@ def Xform "Root"
         )
         double radius = 0.1
         quatf xformOp:orient = (1, 0, 0, 0)
-        float3 xformOp:scale = (2.268492, 2.268492, 2.268492)
-        float3 xformOp:translate = (-1.2039583, -0.8655195, -0.25362477)
+        float3 xformOp:scale = (3, 3, 3)
+        float3 xformOp:translate = (-0.68393135, -3.5762787e-7, -1.4959091)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         def Material "DefaultMaterial"
         {
-            prepend token outputs:surface.connect = </Root/Capsule/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+            prepend token outputs:surface.connect = </Root/CapsuleInstrument/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
 
             def Shader "DefaultSurfaceShader"
             {

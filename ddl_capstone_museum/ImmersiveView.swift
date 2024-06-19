@@ -17,8 +17,10 @@ struct ImmersiveView: View {
     
     @State var lastGestureValue = CGFloat(0)
     @State var stand = Entity()
-    @State var Speed_Graphic_Camera = Entity()
-    @State var Zenit_6_camera = Entity()
+    @State var CubeGuitar = Entity()
+    @State var CylinderErhu = Entity()
+    @State var CylinderErhu_1 = Entity()
+    @State var CapsuleInstrument = Entity()
     
     
     
@@ -37,40 +39,62 @@ struct ImmersiveView: View {
                 )
                 content.add(floor)
                 
-                /* Create the camera table(stand)
-                let stand = ModelEntity(
-                    mesh: .generateBox(width: 1.0, height: 1.0, depth: 1.0),
-                    materials: [SimpleMaterial(color: .black, isMetallic: false)])
-                stand.position.y = 0.0 // 1 meter (m) above the floor
-                stand.position.z = -1.5 // 1.5m in front of the user
-                stand.position.x = 0.5 // 0.5m right of center
-                stand.generateCollisionShapes(recursive: false)
-                // Enable interactions on the entity.
-                stand.components.set(InputTargetComponent())
-                stand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
-                // gravity to PhysicsBody
-                stand.components[PhysicsBodyComponent.self] = .init(
-                    PhysicsBodyComponent(
-                        // mass in kilograms
-                        massProperties: .init(mass: 5.0),
-                        material: .generate(
-                            staticFriction: 0.0,
-                            dynamicFriction: 0.0,
-                            restitution: 0.5
-                        ),
-                        mode: .dynamic
-                    )
-                )
+                async let CubeGuitar = Entity(named: "CubeGuitar", in: realityKitContentBundle)
+                async let CylinderErhu = Entity(named: "CylinderErhu", in: realityKitContentBundle)
+                async let CylinderErhu_1 = Entity(named: "CylinderErhu_1", in: realityKitContentBundle)
+                async let CapsuleInstrument = Entity(named: "CapsuleInstrument", in: realityKitContentBundle)
                 
-                stand.physicsMotion = PhysicsMotionComponent()
-                // add gravity
-                stand.components[PhysicsBodyComponent.self]?.isAffectedByGravity = true
-                // visualizationmode
-                let visDebug = ModelDebugOptionsComponent(visualizationMode: .textureCoordinates)
-                stand.modelDebugOptions = visDebug
-                content.add(stand)
-                // Add the initial RealityKit content
+                if let CubeGuitar = try?await CubeGuitar,
+                   let CylinderErhu = try?await CylinderErhu,
+                   let CylinderErhu_1 = try?await CylinderErhu_1,
+                   let CapsuleInstrument = try?await CapsuleInstrument{
+                    self.CubeGuitar = CubeGuitar
+                    content.add(CubeGuitar);
+                    content.add(CylinderErhu);
+                    content.add(CylinderErhu_1);
+                    content.add(CapsuleInstrument)
+                    
+                    CubeGuitar.position=[15, 0, 100]
+                    CylinderErhu.position=[10, 0, 100]
+                    CylinderErhu_1.position=[5, 0, 100]
+                    CapsuleInstrument.position=[0, 0, 100]
+                    
+                    /* Create the camera table(stand)
+                     let stand = ModelEntity(
+                     mesh: .generateBox(width: 1.0, height: 1.0, depth: 1.0),
+                     materials: [SimpleMaterial(color: .black, isMetallic: false)])
+                     stand.position.y = 0.0 // 1 meter (m) above the floor
+                     stand.position.z = -1.5 // 1.5m in front of the user
+                     stand.position.x = 0.5 // 0.5m right of center
+                     stand.generateCollisionShapes(recursive: false)
+                     // Enable interactions on the entity.
+                     stand.components.set(InputTargetComponent())
+                     stand.components.set(CollisionComponent(shapes: [.generateSphere(radius: 0.1)]))
+                     // gravity to PhysicsBody
+                     stand.components[PhysicsBodyComponent.self] = .init(
+                     PhysicsBodyComponent(
+                     // mass in kilograms
+                     massProperties: .init(mass: 5.0),
+                     material: .generate(
+                     staticFriction: 0.0,
+                     dynamicFriction: 0.0,
+                     restitution: 0.5
+                     ),
+                     mode: .dynamic
+                     )
+                     )
+                     
+                     stand.physicsMotion = PhysicsMotionComponent()
+                     // add gravity
+                     stand.components[PhysicsBodyComponent.self]?.isAffectedByGravity = true
+                     // visualizationmode
+                     let visDebug = ModelDebugOptionsComponent(visualizationMode: .textureCoordinates)
+                     stand.modelDebugOptions = visDebug
+                     content.add(stand)
+                     // Add the initial RealityKit content
+                     */}
                 
+                /*
                 
                 //Add the cameras
                 async let Speed_Graphic_Camera = Entity(named: "Speed_Graphic_Camera", in: realityKitContentBundle)
